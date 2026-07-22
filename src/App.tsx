@@ -2,33 +2,29 @@ import React, { useState } from "react";
 import Tabs from "./components/easy/Tabs";
 import Profile from "./components/easy/Tabs/Profile";
 import Setting from "./components/easy/Tabs/Setting";
-// import { faq } from "./utils";
-// import Accordion from "./components/easy/Accordion";
 import "./App.css";
 
 const tabsData = [
-  { label: "Profile", content: <Profile /> },
-  { label: "Settings", content: <Setting /> },
-  { label: "Tab 3", content: "Content for Tab 3" },
+  { id: 1, label: "Profile", content: <Profile />, disabled: true },
+  { id: 2, label: "Settings", content: <Setting />, disabled: false },
+  { id: 3, label: "Tab 3", content: "Content for Tab 3", disabled: false },
 ];
 
 function App() {
-  // const [activeIndex, setActiveIndex] = React.useState(new Set([]));
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState(() => {
+    const savedTab = localStorage.getItem("active-tab");
+    return savedTab ? parseInt(savedTab) : 0;
+  });
+
+  React.useEffect(() => {
+    localStorage.setItem("active-tab", currentTab);
+  }, [currentTab]);
+
   return (
     <>
-    <div className="header-label">
-      System Design
-    </div>
-      {/* <Accordion
-          items={faq}
-          defaultActiveIndex={0}
-          activeIndex={activeIndex}
-          onChange={setActiveIndex}
-        /> */}
+      <div className="header-label">System Design</div>
       <Tabs
         tabs={tabsData}
-        defaultActiveTab={0}
         currentTab={currentTab}
         onTabChange={setCurrentTab}
       />
