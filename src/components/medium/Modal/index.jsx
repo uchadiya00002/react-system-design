@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { createPortal } from "react-dom";
 import "./index.css";
 
 function Modal({ isOpen, onClose, children, style }) {
-  React.useEffect(() => {
-    if (!isOpen) return;
+  const modalRoot = document.getElementById("modal-root");
+  const modalref = React.useRef(null);
 
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
+  const handleKeyDown = useCallback(
+    (event) => {
+      if (event.key === "Escape") {
         onClose();
       }
-    };
+    },
+    [onClose],
+  );
 
+  React.useEffect(() => {
+    if (isOpen) {
+      modalref.current?.focus();
+    }
+  }, [isOpen]);
+
+  React.useEffect(() => {
+    if (!isOpen) return;
     document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, handleKeyDown]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !modalRoot) return null;
 
-  return (
+  return createPortal(
     <div
       className="modal-overlay modal-backdrop"
       role="dialog"
@@ -33,12 +44,15 @@ function Modal({ isOpen, onClose, children, style }) {
         className="modal-content"
         style={style}
         onClick={(e) => e.stopPropagation()}
+        ref={modalref}
+        tabIndex={-1}
       >
         <Modal.CloseButton onClose={onClose} />
 
         {children}
       </div>
-    </div>
+    </div>,
+    modalRoot,
   );
 }
 

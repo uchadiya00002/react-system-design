@@ -1,25 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
+
 import Modal from "./components/medium/Modal";
 import "./App.css";
 
-function App() {
-  const [openModal, setOpenModal] = useState(true);
+export default function App() {
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
-    <>
-      <div className="App">
-        <button
-          className="open-modal-button"
-          onClick={() => setOpenModal(true)}
-        >
-          Open Modal
-        </button>
-      </div>
-      <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
-        <p>This is the modal content.</p>
+    <div className="App">
+      <button
+        className="open-modal-button"
+        onClick={() => setIsOpenModal(true)}
+      >
+        Open Modal
+      </button>
+      <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
+        <Modal.Title>Delete Account</Modal.Title>
+        <Modal.Description>This action cannot be undone.</Modal.Description>
+        <Modal.Footer>
+          <button
+            className="open-modal-button"
+            onClick={() => setIsOpenModal(false)}
+          >
+            Cancel
+          </button>
+          <button className="open-modal-button">Delete</button>
+        </Modal.Footer>
       </Modal>
-    </>
+    </div>
   );
 }
-
-export default App;

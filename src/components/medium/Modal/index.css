@@ -25,6 +25,10 @@ body {
   position: relative;
 }
 
+.modal-content:focus {
+  background-color: rgb(112, 184, 235);
+}
+
 .modal-close {
   position: absolute;
   right: -4px;
