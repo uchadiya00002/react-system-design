@@ -1,8 +1,30 @@
-.header-label{
-font-size: 22px;
-font-weight: bold;
-text-align: center;
-text-transform: uppercase;
-margin-top: 16px;
-color: blueviolet;
+.header-label {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 16px;
+  color: blueviolet;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.open-modal-button {
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.open-modal-button:hover {
+  background-color: #45a049;
 }
