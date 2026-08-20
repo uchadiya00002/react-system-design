@@ -1,32 +1,19 @@
-import React, { useState } from "react";
 
-import Modal from "./components/medium/Modal";
 import "./App.css";
+// import AccordionExample from "./components/easy/Accordion/Accordion.example.jsx";
+// import TabsExample from "./components/easy/Tabs/Tabs.example.jsx";
+// import ModalExample from "./components/medium/Modal/Modal.example.jsx";
+import InfiniteScrollExample from "./components/medium/InfiniteScroll/InfiniteScroll.example.jsx";
 
 export default function App() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
   return (
     <div className="App">
-      <button
-        className="open-modal-button"
-        onClick={() => setIsOpenModal(true)}
-      >
-        Open Modal
-      </button>
-      <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
-        <Modal.Title>Delete Account</Modal.Title>
-        <Modal.Description>This action cannot be undone.</Modal.Description>
-        <Modal.Footer>
-          <button
-            className="open-modal-button"
-            onClick={() => setIsOpenModal(false)}
-          >
-            Cancel
-          </button>
-          <button className="open-modal-button">Delete</button>
-        </Modal.Footer>
-      </Modal>
+      <div className="examples-grid">
+        {/* <AccordionExample />
+        <TabsExample />
+        <ModalExample /> */}
+        <InfiniteScrollExample />
+      </div>
     </div>
   );
 }
