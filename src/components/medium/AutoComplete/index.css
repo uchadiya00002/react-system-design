@@ -1,0 +1,29 @@
+.autocomplete-input {
+  outline: none;
+  height: 40px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.autocomplete-input:focus {
+  border: 1px solid blue;
+}
+
+.autocomplete-list {
+  height: 400px;
+  max-height: 400px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 24px;
+  color: gray;
+  overflow:auto
+}
+
+.autocomplete-item{
+    padding: 5px;
+}
+.selected-item {
+  background-color: lightblue;
+  color: white;
+}
