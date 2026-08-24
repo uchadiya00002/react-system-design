@@ -3,7 +3,8 @@ import "./App.css";
 // import AccordionExample from "./components/easy/Accordion/Accordion.example.jsx";
 // import TabsExample from "./components/easy/Tabs/Tabs.example.jsx";
 // import ModalExample from "./components/medium/Modal/Modal.example.jsx";
-import InfiniteScrollExample from "./components/medium/InfiniteScroll/InfiniteScroll.example.jsx";
+// import InfiniteScrollExample from "./components/medium/InfiniteScroll/InfiniteScroll.example.jsx";
+import AutoCompleteExample from "./components/medium/AutoComplete/AutoComplete.example.jsx";
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
         {/* <AccordionExample />
         <TabsExample />
         <ModalExample /> */}
-        <InfiniteScrollExample />
+        {/* <InfiniteScrollExample /> */}
+        <AutoCompleteExample/>
       </div>
     </div>
   );
